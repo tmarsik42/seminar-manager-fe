@@ -78,20 +78,21 @@ This repository implements a **Seminar Management**'s frontend, which manages **
 - [Package Manager](https://www.npmjs.com/) (npm, pnpm, yarn,...)
 
 ### **Setup**
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/tmarsik42/seminar-manager-fe.git
-   cd seminar-manager-fe
-   ```
-2. Install dependencies:
-   ```bash
-   yarn install
-   ```
-3. Configure `.env` file or node envs.
-5. Start the development server:
-   ```bash
-   yarn dev
-   ```
+
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
 
 ---
 
