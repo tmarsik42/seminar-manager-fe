@@ -1,0 +1,81 @@
+@use './_config/prefix';
+@use "sass:map";
+
+$spacing: (
+    spacing-sm: 0.5rem,
+    spacing-md: 1rem,
+    spacing-lg: 1.5rem,
+    spacing-xl: 2rem
+);
+
+$fonts: (
+    primary: (
+        family: 'Roboto Flex',
+        weights: (
+            light: 300,
+            regular: 400,
+            bold: 700
+        ),
+        size: (
+            base: 1rem,
+            sm: 0.875rem,
+            lg: 1.25rem,
+            xl: 1.5rem
+        ),
+        line-height: 1.5
+    ),
+    headings: (
+        family: 'Roboto Flex',
+        weight: (
+            regular: 400,
+            bold: 700
+        ),
+        size: (
+            h1: 3rem,
+            h2: 2.5rem,
+            h3: 2rem,
+            h4: 1.75rem,
+            h5: 1.5rem,
+            h6: 1.25rem
+        ),
+        line-height: 1.2
+    )
+);
+
+$colors: (
+    primary-color: #3498db,
+    secondary-color: #2ecc71
+);
+
+$screen-sm: 480px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
+$screen-sm-max: ($screen-md - 1);
+$screen-md-max: ($screen-lg - 1);
+$screen-lg-max: ($screen-xl - 1);
+
+@mixin respond-to($media) {
+    @if $media == sm {
+        @media (max-width: $screen-sm-max) { @content }
+    }
+    @else if $media == md {
+        @media (min-width: $screen-md) and (max-width: $screen-md-max) { @content }
+    }
+    @else if $media == lg {
+        @media (min-width: $screen-lg) and (max-width: $screen-lg-max) { @content }
+    }
+    @else if $media == xl {
+        @media (min-width: $screen-xl) { @content }
+    }
+}
+
+:root {
+    @include prefix.prefix-vars('tdk', $spacing);
+}
+:root {
+    @include prefix.prefix-vars('tdk', $fonts);
+}
+:root {
+    @include prefix.prefix-vars('tdk', $colors);
+}

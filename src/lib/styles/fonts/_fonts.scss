@@ -1,0 +1,46 @@
+
+
+body {
+    font-family: var(--tdk-primary-family), sans-serif;
+    font-size: var(--tdk-primary-size-base);
+    line-height: var(--tdk-primary-line-height);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--tdk-headings-family), sans-serif;
+    font-weight: var(--tdk-headings-weight-regular);
+    line-height: var(--tdk-headings-line-height);
+}
+
+h1 {
+    font-size: var(--tdk-headings-size-h1);
+}
+h2 {
+    font-size: var(--tdk-headings-size-h2);
+}
+h3 {
+    font-size: var(--tdk-headings-size-h3);
+}
+h4 {
+    font-size: var(--tdk-headings-size-h4);
+}
+h5 {
+    font-size: var(--tdk-headings-size-h5);
+}
+h6 {
+    font-size: var(--tdk-headings-size-h6);
+}
+
+p,
+span,
+li {
+    font-family: var(--tdk-primary-family), sans-serif;
+    font-weight: var(--tdk-primary-weights-regular);
+    font-size: var(--tdk-primary-size-base);
+    line-height: var(--tdk-primary-line-height);
+}

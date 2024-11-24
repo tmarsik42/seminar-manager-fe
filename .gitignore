@@ -19,3 +19,9 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen

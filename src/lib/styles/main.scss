@@ -1,0 +1,9 @@
+@use 'reset/reset';
+@use 'fonts/fonts';
+@use 'spacing/spacing';
+@use 'colors/colors';
+@use 'layout/layout';
+
+$colors: (
+    primary: red
+)

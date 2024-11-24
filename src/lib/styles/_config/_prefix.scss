@@ -1,0 +1,16 @@
+@use "sass:meta";
+
+@mixin prefix-vars($prefix, $variables, $parent-name: null) {
+    @each $name, $value in $variables {
+        // Create the current property name
+        $current-name: if($parent-name == null, $name, #{$parent-name}-#{$name});
+
+        // If the value is a map, recursively call the mixin to flatten it
+        @if meta.type-of($value) == 'map' {
+            @include prefix-vars($prefix, $value, $current-name);
+        } @else {
+            // Output the CSS variable with the current name
+            --#{$prefix}-#{$current-name}: #{$value};
+        }
+    }
+}
