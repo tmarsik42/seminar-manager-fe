@@ -10,7 +10,7 @@ This repository implements a **Seminar Management**'s frontend, which manages **
 
 #### **1. Request a Seminar (Workshop/Lecture) Creation:**
 
--   **User Story:**  
+-   **User Story:**
     As an unauthenticated visitor, I want to fill out a "Workshop/Lecture Registration" form so that I can request the creation of a new workshop or lecture.
 
 -   **Details:**
@@ -24,7 +24,7 @@ This repository implements a **Seminar Management**'s frontend, which manages **
 
 #### **2. Approve or Reject Seminar Requests:**
 
--   **User Story:**  
+-   **User Story:**
     As an admin, I want to review submitted seminar requests (workshops/lectures) so that I can decide whether to approve or reject them.
 
 -   **Details:**
@@ -36,7 +36,7 @@ This repository implements a **Seminar Management**'s frontend, which manages **
 
 #### **3. Create a Registration Form for Approved Workshops:**
 
--   **User Story:**  
+-   **User Story:**
     As an admin, I want to create a registration form for an approved workshop so that participants can sign up for specific time slots.
 
 -   **Details:**
@@ -50,7 +50,7 @@ This repository implements a **Seminar Management**'s frontend, which manages **
 
 #### **4. View Participants for Workshops:**
 
--   **User Story:**  
+-   **User Story:**
     As an admin, I want to view a list of participants who have registered for specific workshops.
 
 -   **Details:**
@@ -63,7 +63,7 @@ This repository implements a **Seminar Management**'s frontend, which manages **
 
 #### **5. Register for Workshops:**
 
--   **User Story:**  
+-   **User Story:**
     As an unauthenticated visitor, I want to fill out a registration form for a workshop to secure a spot in a specific time slot.
 
 -   **Details:**
@@ -112,7 +112,7 @@ You can preview the production build with `npm run preview`.
 
 ### **Visitor Interface:**
 
--   Visitors can request to create a workshop/lecture via `/request-workshop`,`/request-lecture`.
+-   Visitors can request to create a workshop/lecture via `/workshops/request`,`/lectures/request`.
 -   They can see a list of approved and open workshops at `/workshops`.
 -   They can register for an approved workshop at `/workshops/{id}/register`.
 
