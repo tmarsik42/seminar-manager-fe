@@ -31,20 +31,24 @@ $fonts: (
             bold: 700
         ),
         size: (
-            h1: 3rem,
-            h2: 2.5rem,
-            h3: 2rem,
-            h4: 1.75rem,
-            h5: 1.5rem,
-            h6: 1.25rem
+            h1: 2rem,
+            h2: 1.5rem,
+            h3: 1rem,
+            h4: .75rem,
+            h5: .5rem,
+            h6: .25rem
         ),
         line-height: 1.2
     )
 );
 
 $colors: (
-    primary-color: #3498db,
-    secondary-color: #2ecc71
+    primary-color: hsl(30, 30%, 95%),
+    secondary-color: hsl(30, 30%, 70%),
+    subtle-border-color: hsl(0, 0%, 80%),
+    text-color: hsl(30, 30%, 50%),
+    text-muted-color: hsl(0, 0%, 50%),
+    hover-bgcolor: hsl(0, 0%, 90%),
 );
 
 $screen-sm: 480px;
