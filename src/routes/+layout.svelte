@@ -1,23 +1,21 @@
 <script lang="ts">
     import '../app.css';
-    import Header from '$lib/components/Header.svelte';
+    import SideNav from '$lib/components/SideNav.svelte';
 
     let { children } = $props();
 </script>
 
 <style lang="scss">
     main {
-        margin-left: 200px;
-        padding: 1px 16px;
-        height: 1000px;
-
-        @include respond-to(sm) {
-            margin-left: 0;
-        }
+        margin-left: 15rem;
+        padding: calc(2 * var(--tdk-spacing-xl)) 10% 0 10%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 </style>
 
-<Header />
+<SideNav />
 
 <main>
     {@render children()}
