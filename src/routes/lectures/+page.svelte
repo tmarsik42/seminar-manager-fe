@@ -1,11 +1,11 @@
 <script>
     import CallToActionLink from '$lib/components/CallToActionLink.svelte';
+    import Heading from '$lib/components/Heading.svelte';
+    import CtaGroup from '$lib/components/CtaGroup.svelte';
 </script>
 
-<section class="headings">
-    <h1>✨&nbsp;Přednášky&nbsp;✨</h1>
-</section>
+<Heading text="Přednášky" />
 
-<section class="ctas">
+<CtaGroup>
     <CallToActionLink icon="👍" text="Chci udělat přednášku" href="/lectures/request" />
-</section>
+</CtaGroup>
