@@ -18,6 +18,7 @@
             align-items: center;
             margin-bottom: var(--tdk-spacing-lg);
             padding: var(--tdk-spacing-md) 0;
+            text-align: center;
 
             .avatar {
                 width: 5rem;
