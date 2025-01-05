@@ -1,6 +1,7 @@
 <script lang="ts">
     import '../../app.css';
     import SideNav from '$lib/components/SideNav.svelte';
+    import mkLogo from '$lib/assets/mk-logo.png';
 
     let { children } = $props();
 </script>
@@ -13,9 +14,50 @@
         flex-direction: column;
         align-items: center;
     }
+
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        gap: var(--tdk-spacing-sm);
+        padding: var(--tdk-spacing-md);
+        margin-bottom: var(--tdk-spacing-sm);
+        text-decoration: none;
+        color: var(--tdk-hover-color);
+        border-radius: 16px;
+
+        &:hover {
+            background-color: var(--tdk-hover-bgcolor);
+        }
+    }
 </style>
 
-<SideNav />
+<SideNav title="Fashion Alley" subtitle="Animefest 2025">
+    {#snippet logo()}
+        <img src={mkLogo} alt="Fashion Alley" />
+    {/snippet}
+
+    {#snippet menuItems()}
+        <a href="/">
+            <span class="icon">🏠</span>
+            Hlavní stránka
+        </a>
+        <a href="/workshops">
+            <span class="icon">📚</span>
+            Workshopy
+        </a>
+        <a href="/lectures">
+            <span class="icon">🎤</span>
+            Přednášky
+        </a>
+    {/snippet}
+</SideNav>
 
 <main>
     {@render children()}
