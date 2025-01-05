@@ -1,5 +1,12 @@
 <script lang="ts">
-    import mkLogo from '../assets/mk-logo.png';
+    import type { Snippet } from 'svelte';
+
+    const {
+        title,
+        subtitle,
+        logo,
+        menuItems
+    }: { title: string; subtitle: string; logo: Snippet; menuItems: Snippet } = $props();
 </script>
 
 <style lang="scss">
@@ -36,11 +43,11 @@
             }
 
             .info {
-                .name {
+                .title {
                     font-weight: bold;
                 }
 
-                .email {
+                .subtitle {
                     font-size: 0.9rem;
                     color: var(--tdk-text-muted);
                 }
@@ -71,26 +78,15 @@
 <nav>
     <div class="profile">
         <div class="avatar">
-            <img src={mkLogo} alt="Fashion Alley" />
+            {@render logo()}
         </div>
         <div class="info">
-            <div class="name">Fashion Alley</div>
-            <div class="email">Animefest 2025</div>
+            <div class="title">{title}</div>
+            <div class="subtitle">{subtitle}</div>
         </div>
     </div>
 
     <div class="menu-group">
-        <a href="/">
-            <span class="icon">🏠</span>
-            Hlavní stránka
-        </a>
-        <a href="/workshops">
-            <span class="icon">📚</span>
-            Workshopy
-        </a>
-        <a href="/lectures">
-            <span class="icon">🎤</span>
-            Přednášky
-        </a>
+        {@render menuItems()}
     </div>
 </nav>
