@@ -2,6 +2,9 @@
   "name": "seminar-manager-fe",
   "version": "0.0.1",
   "type": "module",
+  "description": "Frontend for the seminar manager application",
+  "author": "Tadeáš Maršík <tad.marsik@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",

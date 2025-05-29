@@ -1,0 +1,266 @@
+openapi: 3.0.3
+info:
+  title: TDK - Seminars module
+  termsOfService: http://swagger.io/terms/
+  version: 0.0.1
+paths:
+  /request-seminar:
+    post:
+      tags:
+        - seminar
+      summary: Create a new unapproved seminar.
+      description: User requests to make a seminar.
+      operationId: requestSeminar
+      requestBody:
+        description: Request a new seminar
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Seminar'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Seminar'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Seminar'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+  /api/set-status-seminar:
+    post:
+      tags:
+        - seminar
+      summary: Update the status of a seminar
+      description: Allows an admin to update the status of a seminar.
+      operationId: setSeminarStatus
+      requestBody:
+        description: Seminar ID and the new status
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - status
+              properties:
+                id:
+                  type: integer
+                  format: int64
+                  description: The unique ID of the seminar to update.
+                  example: 10
+                status:
+                  type: string
+                  description: The new status for the seminar.
+                  enum:
+                    - draft
+                    - archived
+                    - published
+                  example: published
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Indicates whether the operation was successful.
+                    example: true
+                  message:
+                    type: string
+                    description: A message providing more details about the operation.
+                    example: "Seminar status updated successfully."
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Indicates whether the operation failed.
+                    example: false
+                  message:
+                    type: string
+                    description: Error message explaining why the operation failed.
+                    example: "Invalid seminar ID or status."
+        '403':
+          description: Unauthorized action
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Indicates the operation failed due to unauthorized access.
+                    example: false
+                  message:
+                    type: string
+                    description: Error message explaining why the operation failed.
+                    example: "Admin privileges required to update seminar status."
+  /api/get-seminars:
+    get:
+      tags:
+        - seminar
+      summary: List seminars
+      description: Retrieve a list of seminars with optional filters.
+      operationId: getSeminars
+      parameters:
+        - name: status
+          in: query
+          description: Filter seminars by their status.
+          required: false
+          schema:
+            type: string
+            enum:
+              - draft
+              - archived
+              - published
+            example: published
+        - name: title
+          in: query
+          description: Search seminars by title.
+          required: false
+          schema:
+            type: string
+            example: "Anime Workshop"
+        - name: createdBy
+          in: query
+          description: Filter seminars by the creator's ID.
+          required: false
+          schema:
+            type: integer
+            format: int64
+            example: 123
+        - name: page
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            example: 1
+        - name: limit
+          in: query
+          description: Number of seminars per page.
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            example: 10
+      responses:
+        '200':
+          description: List of seminars
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    description: Array of seminar objects.
+                    items:
+                      $ref: '#/components/schemas/Seminar'
+                  pagination:
+                    type: object
+                    properties:
+                      page:
+                        type: integer
+                        description: Current page number.
+                        example: 1
+                      limit:
+                        type: integer
+                        description: Number of items per page.
+                        example: 10
+                      total:
+                        type: integer
+                        description: Total number of seminars.
+                        example: 50
+        '400':
+          description: Invalid filters provided
+components:
+  schemas:
+    Seminar:
+      type: object
+      required:
+        - title
+        - description
+        - speaker
+        - contactEmail
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        status:
+          type: string
+          description: Status of the seminar suggestion (default is `draft`).
+          example: draft
+          enum:
+            - draft
+            - archived
+            - published
+        title:
+          type: string
+          description: Title of the seminar.
+          example: "Exploring Anime Storytelling"
+        description:
+          type: string
+          description: A brief description of the seminar.
+          example: "A seminar on how anime uses visual storytelling techniques."
+        speaker:
+          type: string
+          description: Name of the speaker suggesting the seminar.
+          example: "Jane Smith"
+        speakerBio:
+          type: string
+          description: A short biography of the speaker.
+          example: "Jane is a writer specializing in anime scriptwriting."
+        contactEmail:
+          type: string
+          format: email
+          description: Email address for further communication.
+          example: "jane.smith@example.com"
+        phoneNumber:
+          type: string
+          description: Contact phone number of the speaker.
+          example: "+420123456789"
+        preferredTime:
+          type: string
+          description: Optional preferred time or day for the seminar.
+          example: "Afternoon on Saturday"
+        comments:
+          type: string
+          description: Additional comments or suggestions for the admin.
+          example: "I'd prefer a smaller room if possible."
+        maxParticipants:
+          type: integer
+          description: Maximum number of participants allowed in the seminar.
+          example: 30
+        requirements:
+          type: string
+          description: Any specific requirements for the participants.
+          example: "Participants should bring their own notebooks."
+        category:
+          type: string
+          description: Category of the seminar.
+          example: "Storytelling"
+        tags:
+          type: array
+          items:
+            type: string
+          description: Tags associated with the seminar.
+          example: ["anime", "storytelling", "workshop"]
+      xml:
+        name: seminar
